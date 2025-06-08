@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+	<IncludeContentInPack>true</IncludeContentInPack>
+
+	<NoWarn>$(NoWarn);NU5128</NoWarn>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<PackageType>Dependency</PackageType>
+		<PackageVersion>0.1.0</PackageVersion>
+		<Version>0.1.0</Version>
+		<PackageId>LC.Results</PackageId>
+		<Title>LC Results Pattern for .NET</Title>
+		<Company>LC Desenvolvimentos</Company>
+		<Authors>Luigi C. Filho</Authors>
+		<Copyright>LC Desenvolvimentos®. © 2025</Copyright>
+		<Description>Implementation the Results Pattern for .NET API applications.</Description>
+		<PackageTags>result;pattern</PackageTags>
+		<PackageIcon>results.png</PackageIcon>
+		<PackageCopyright>LC Desenvolvimentos®. © 2025</PackageCopyright>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageProjectUrl>https://github.com/luigicfilho/LC.ApiKey</PackageProjectUrl>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageLicenseFile>CC-BY-NC-ND-4.0.txt</PackageLicenseFile>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/luigicfilho/LC.ApiKey</RepositoryUrl>
+		<PackageReleaseNotes>
+			Version 0.1.0: Initial release with basic features.
+		</PackageReleaseNotes>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<None Include="results.png" Pack="true" Visible="false" PackagePath="" />
+		<None Include="ReadMe.md" Pack="true" PackagePath="/" />
+		<None Include="CC-BY-NC-ND-4.0.txt" Pack="true" Visible="false" PackagePath="" />
+	</ItemGroup>
+
+</Project>
