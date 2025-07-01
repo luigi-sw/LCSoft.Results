@@ -120,8 +120,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 Contributions are welcome! Please open issues or submit pull requests on GitHub.
 
-
----
-
-Let me know if you want it tailored to your specific namespace, API surface, or if your implementation includes support for domain-specific error types, asynchronous workflows (`Task<Result<T>>`), or monadic composition.
-
