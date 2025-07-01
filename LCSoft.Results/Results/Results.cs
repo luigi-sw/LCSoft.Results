@@ -1,30 +1,29 @@
-﻿namespace LC.Results;
+﻿namespace LCSoft.Results;
 
-public sealed record sResults : IResult
+public sealed record Results : IResult
 {
     public bool IsSuccess { get; } = false;
     public bool IsFailure => !IsSuccess;
-    public Error? Error { get; }
+    public ErrorsType? Error { get; }
 
-    private sResults()
-    {
+    private Results() {
         IsSuccess = true;
         Error = default;
     }
 
-    private sResults(Error error)
+    private Results(ErrorsType error)
     {
         IsSuccess = false;
         Error = error;
     }
 
-    public static sResults Success() => new();
-    public static sResults Failure(Error error) => new(error);
+    public static Results Success() => new();
+    public static Results Failure(ErrorsType error) => new(error);
 
-    public TResult Match<TResult>(Func<TResult> onSuccess, Func<Error, TResult> onFailure)
+    public TResult Match<TResult>(Func<TResult> onSuccess, Func<ErrorsType, TResult> onFailure)
                 => IsSuccess ? onSuccess() : onFailure(Error!);
 
-    public void Match(Action? success = null, Action<Error>? failure = null)
+    public void Match(Action? success = null, Action<ErrorsType>? failure = null)
     {
         if (IsSuccess)
         {
@@ -37,42 +36,42 @@ public sealed record sResults : IResult
     }
 }
 
-public sealed record sResults<TValue> : IResult
+public sealed record Results<TValue> : IResult
 {
     // If you want theses objects be accessible only on math()
     // make them private otherwise let them public
     // but will make things more complex, and work with delegates 
     // maybe you want these values accessible or create method for that
     public readonly TValue? Value;
-    public readonly Error? Error;
+    public readonly ErrorsType? Error;
 
     public bool IsSuccess { get; } = false;
     public bool IsError => !IsSuccess;
 
-    private sResults() { }
+    private Results() { }
 
-    private sResults(TValue value)
+    private Results(TValue value)
     {
         IsSuccess = true;
         Value = value;
         Error = default;
     }
 
-    private sResults(Error error)
+    private Results(ErrorsType error)
     {
         IsSuccess = false;
         Value = default;
         Error = error;
     }
 
-    public static implicit operator sResults<TValue>(TValue value) => new(value);
+    public static implicit operator Results<TValue>(TValue value) => new(value);
 
-    public static implicit operator sResults<TValue>(Error error) => new(error);
+    public static implicit operator Results<TValue>(ErrorsType error) => new(error);
 
-    public TResult Match<TResult>(Func<TValue, TResult> onSuccess, Func<Error, TResult> onFailure)
+    public TResult Match<TResult>(Func<TValue, TResult> onSuccess, Func<ErrorsType, TResult> onFailure)
                 => IsSuccess ? onSuccess(Value!) : onFailure(Error!);
 
-    public void Match(Action<TValue>? success = null, Action<Error>? failure = null)
+    public void Match(Action<TValue>? success = null, Action<ErrorsType>? failure = null)
     {
         if (IsSuccess)
         {
@@ -84,6 +83,6 @@ public sealed record sResults<TValue> : IResult
         }
     }
 
-    public static sResults<TValue> Failure(Error error) => new(error);
-    public static sResults<TValue> Success(TValue value) => new(value);
+    public static Results<TValue> Failure(ErrorsType error) => new(error);
+    public static Results<TValue> Success(TValue value) => new(value);
 }

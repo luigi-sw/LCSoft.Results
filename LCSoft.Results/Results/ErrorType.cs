@@ -1,4 +1,4 @@
-﻿namespace LC.Results;
+﻿namespace LCSoft.Results;
 
 public enum ErrorType
 {

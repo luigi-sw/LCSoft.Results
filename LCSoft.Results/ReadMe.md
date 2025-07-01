@@ -1,4 +1,4 @@
-﻿# LC Results Pattern for .NET
+﻿# LCSoft: Results Pattern for .NET
 
 A simple and expressive implementation of the Results Pattern for .NET applications. This package helps you model operation outcomes in a consistent, predictable way — avoiding exceptions for control flow and enabling robust error handling.
 
@@ -21,20 +21,20 @@ A simple and expressive implementation of the Results Pattern for .NET applicati
 Install via NuGet:
 
 ```bash
-dotnet add package LC.Results
+dotnet add package LCSoft.Results
 ```
 
 Or via Package Manager:
 
 ```bash
-Install-Package LC.Results
+Install-Package LCSoft.Results
 ```
 
 🚀 Quick Start
 Basic Usage
 
 ```csharp
-using LC.Results;
+using LCSoft.Results;
 
 Results result = DoSomething();
 
@@ -119,9 +119,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 🙌 Contributing
 
 Contributions are welcome! Please open issues or submit pull requests on GitHub.
-
-
----
-
-Let me know if you want it tailored to your specific namespace, API surface, or if your implementation includes support for domain-specific error types, asynchronous workflows (`Task<Result<T>>`), or monadic composition.
 

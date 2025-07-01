@@ -15,8 +15,8 @@
 		<PackageType>Dependency</PackageType>
 		<PackageVersion>0.1.0</PackageVersion>
 		<Version>0.1.0</Version>
-		<PackageId>LC.Results</PackageId>
-		<Title>LC Results Pattern for .NET</Title>
+		<PackageId>LCSoft.Results</PackageId>
+		<Title>LCSoft Results Pattern for .NET</Title>
 		<Company>LC Desenvolvimentos</Company>
 		<Authors>Luigi C. Filho</Authors>
 		<Copyright>LC Desenvolvimentos®. © 2025</Copyright>

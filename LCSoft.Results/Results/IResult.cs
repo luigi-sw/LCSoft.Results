@@ -1,3 +1,3 @@
-﻿namespace LC.Results;
+﻿namespace LCSoft.Results;
 
 public interface IResult { }
