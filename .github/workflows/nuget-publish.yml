@@ -1,0 +1,46 @@
+name: Publish NuGet Package
+
+on:
+  push:
+    branches:
+      - release/**
+
+jobs:
+  build-and-publish:
+    runs-on: windows-latest
+
+    env:
+      PROJECT_PATH: LCSoft.Results/LCSoft.Results.csproj
+      PACKAGE_OUTPUT_PATH: ${{ github.workspace }}/output
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ${{ env.PROJECT_PATH }}
+
+      - name: Build
+        run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
+
+      - name: Run Tests
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+      - name: Pack NuGet package
+        run: dotnet pack ${{ env.PROJECT_PATH }} --configuration Release --output ${{ env.PACKAGE_OUTPUT_PATH }} --no-build
+
+      # -------- GITHUB PACKAGE PUBLISH --------
+      - name: Push to GitHub NuGet Registry
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_PATH }}/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # -------- OPTIONAL: NUGET.ORG PUBLISH --------
+      - name: Push to NuGet.org
+        if: secrets.NUGET_API_KEY != ''
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_PATH }}/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
