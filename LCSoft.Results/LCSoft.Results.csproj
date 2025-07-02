@@ -9,6 +9,7 @@
 
 	<NoWarn>$(NoWarn);NU5128</NoWarn>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  
   </PropertyGroup>
 
 	<PropertyGroup>
@@ -25,18 +26,19 @@
 		<PackageIcon>results.png</PackageIcon>
 		<PackageCopyright>LC Desenvolvimentos®. © 2025</PackageCopyright>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
-		<PackageProjectUrl>https://github.com/luigicfilho/LC.ApiKey</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/luigi-sw/LCSoft.Results</PackageProjectUrl>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageLicenseFile>CC-BY-NC-ND-4.0.txt</PackageLicenseFile>
 		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/luigicfilho/LC.ApiKey</RepositoryUrl>
+		<RepositoryUrl>https://github.com/luigi-sw/LCSoft.Results</RepositoryUrl>
 		<PackageReleaseNotes>
 			Version 0.1.0: Initial release with basic features.
 		</PackageReleaseNotes>
 	</PropertyGroup>
 
-
+	
 	<ItemGroup>
+		<InternalsVisibleTo Include="LCSoft.Results.Tests" />
 		<None Include="results.png" Pack="true" Visible="false" PackagePath="" />
 		<None Include="ReadMe.md" Pack="true" PackagePath="/" />
 		<None Include="CC-BY-NC-ND-4.0.txt" Pack="true" Visible="false" PackagePath="" />

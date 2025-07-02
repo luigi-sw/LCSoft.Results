@@ -1,6 +1,8 @@
-﻿namespace LCSoft.Results;
+﻿using System.Diagnostics.CodeAnalysis;
 
-public sealed record sResults : IResult
+namespace LCSoft.Results;
+
+public sealed record sResults : IResult<Error>
 {
     public bool IsSuccess { get; } = false;
     public bool IsFailure => !IsSuccess;
@@ -18,7 +20,9 @@ public sealed record sResults : IResult
         Error = error;
     }
 
+    [ExcludeFromCodeCoverage]
     public static sResults Success() => new();
+    [ExcludeFromCodeCoverage]
     public static sResults Failure(Error error) => new(error);
 
     public TResult Match<TResult>(Func<TResult> onSuccess, Func<Error, TResult> onFailure)
@@ -37,14 +41,14 @@ public sealed record sResults : IResult
     }
 }
 
-public sealed record sResults<TValue> : IResult
+public sealed record sResults<TValue> : IResult<Error>
 {
     // If you want theses objects be accessible only on math()
     // make them private otherwise let them public
     // but will make things more complex, and work with delegates 
     // maybe you want these values accessible or create method for that
-    public readonly TValue? Value;
-    public readonly Error? Error;
+    public TValue? Value { get; }
+    public Error? Error { get; }
 
     public bool IsSuccess { get; } = false;
     public bool IsError => !IsSuccess;
@@ -72,6 +76,9 @@ public sealed record sResults<TValue> : IResult
     public TResult Match<TResult>(Func<TValue, TResult> onSuccess, Func<Error, TResult> onFailure)
                 => IsSuccess ? onSuccess(Value!) : onFailure(Error!);
 
+    TResult IResult<Error>.Match<TResult>(Func<TResult> onSuccess, Func<Error, TResult> onFailure)
+       => IsSuccess ? onSuccess() : onFailure(Error!);
+
     public void Match(Action<TValue>? success = null, Action<Error>? failure = null)
     {
         if (IsSuccess)
@@ -84,6 +91,20 @@ public sealed record sResults<TValue> : IResult
         }
     }
 
+    void IResult<Error>.Match(Action? success, Action<Error>? failure)
+    {
+        if (IsSuccess)
+        {
+            success?.Invoke();
+        }
+        else
+        {
+            failure?.Invoke(Error!);
+        }
+    }
+
+    [ExcludeFromCodeCoverage]
     public static sResults<TValue> Failure(Error error) => new(error);
+    [ExcludeFromCodeCoverage]
     public static sResults<TValue> Success(TValue value) => new(value);
 }
