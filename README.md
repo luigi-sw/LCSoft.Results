@@ -157,13 +157,6 @@ Results<int> ParseNumber(string input)
         return Result<int>.Success(number);
     return Result<int>.Failure("Invalid number format");
 }
-
-Results<int> CalculateSomething(int number)
-{
-    if (number < 0)
-        return Result<int>.Failure("Negative number not allowed");
-    return Result<int>.Success(number * 10);
-}
 ```
 
 
