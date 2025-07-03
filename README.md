@@ -3,7 +3,7 @@
 A robust, flexible, and type-safe result and error handling library for .NET applications.
 Provides unified success/failure result types with rich error information and functional pattern matching for clean, expressive code.
 
-[![NuGet](https://img.shields.io/nuget/v/Results.Pattern.svg)](https://www.nuget.org/packages/LCSoft.Results/) 
+[![NuGet](https://img.shields.io/nuget/v/LCSoft.Results.svg)](https://www.nuget.org/packages/LCSoft.Results/) 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 ---
