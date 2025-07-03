@@ -14,6 +14,7 @@ jobs:
     env:
       PROJECT_PATH: LCSoft.Results/LCSoft.Results.csproj
       PACKAGE_OUTPUT_PATH: ${{ github.workspace }}\output
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 
     steps:
       - name: Checkout code
@@ -38,13 +39,12 @@ jobs:
 
       # -------- GITHUB PACKAGE PUBLISH --------
       - name: Push to GitHub NuGet Registry
-        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_PATH }}\*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.MY_TOKEN }}
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_PATH }}\*.nupkg --skip-duplicate --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.MY_TOKEN }}
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.MY_TOKEN }}
 
       # -------- OPTIONAL: NUGET.ORG PUBLISH --------
       - name: Push to NuGet.org
         if: ${{ env.NUGET_API_KEY != '' }}
-        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_PATH }}/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ env.NUGET_API_KEY }}
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_PATH }}\*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ env.NUGET_API_KEY }}
+          
