@@ -38,7 +38,7 @@ jobs:
 
       # -------- GITHUB PACKAGE PUBLISH --------
       - name: Push to GitHub NuGet Registry
-        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_PATH }}/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_PATH }}/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
