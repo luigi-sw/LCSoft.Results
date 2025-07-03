@@ -40,7 +40,7 @@
 	<ItemGroup>
 		<InternalsVisibleTo Include="LCSoft.Results.Tests" />
 		<None Include="results.png" Pack="true" Visible="false" PackagePath="" />
-		<None Include="ReadMe.md" Pack="true" PackagePath="/" />
+		<None Include="readme.md" Pack="true" PackagePath="/" />
 		<None Include="CC-BY-NC-ND-4.0.txt" Pack="true" Visible="false" PackagePath="" />
 	</ItemGroup>
 
