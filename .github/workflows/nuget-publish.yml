@@ -34,7 +34,7 @@ jobs:
         run: dotnet test --configuration Release --no-build --verbosity normal
 
       - name: Pack NuGet package
-        run: dotnet pack ${{ env.PROJECT_PATH }} --configuration Release --output ${{ env.PACKAGE_OUTPUT_PATH }} --no-build
+        run: dotnet pack ${{ env.PROJECT_PATH }} --configuration Release --skip-duplicate --output ${{ env.PACKAGE_OUTPUT_PATH }} --no-build
 
       # -------- GITHUB PACKAGE PUBLISH --------
       - name: Push to GitHub NuGet Registry
