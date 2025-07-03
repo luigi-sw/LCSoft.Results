@@ -151,7 +151,7 @@ Use ErrorsType.FromCode(code) to retrieve error types dynamically.
 ## ✅ Example
 
 ```csharp
-static Results<int> ParseNumber(string input)
+Results<int> ParseNumber(string input)
 {
     if (int.TryParse(input, out int number))
         return Results<int>.Success(number);

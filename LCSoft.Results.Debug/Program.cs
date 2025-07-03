@@ -178,7 +178,6 @@ static Results CompareNumber(int inputA, int inputB)
 #endregion
 #endregion
 
-
 #region sResults Usage
 sResults sboolResult = sCompareNumber(1, 2);
 
