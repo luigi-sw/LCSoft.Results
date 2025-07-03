@@ -14,8 +14,8 @@
 
 	<PropertyGroup>
 		<PackageType>Dependency</PackageType>
-		<PackageVersion>0.1.0</PackageVersion>
-		<Version>0.1.0</Version>
+		<PackageVersion>0.1.1</PackageVersion>
+		<Version>0.1.1</Version>
 		<PackageId>LCSoft.Results</PackageId>
 		<Title>LCSoft Results Pattern for .NET</Title>
 		<Company>LC Desenvolvimentos</Company>
@@ -33,6 +33,7 @@
 		<RepositoryUrl>https://github.com/luigi-sw/LCSoft.Results</RepositoryUrl>
 		<PackageReleaseNotes>
 			Version 0.1.0: Initial release with basic features.
+			Version 0.1.1: Minor fixes, cleanup readme
 		</PackageReleaseNotes>
 	</PropertyGroup>
 
