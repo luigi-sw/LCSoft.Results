@@ -151,11 +151,11 @@ Use ErrorsType.FromCode(code) to retrieve error types dynamically.
 ## ✅ Example
 
 ```csharp
-Results<int> ParseNumber(string input)
+static Results<int> ParseNumber(string input)
 {
     if (int.TryParse(input, out int number))
-        return Result<int>.Success(number);
-    return Result<int>.Failure("Invalid number format");
+        return Results<int>.Success(number);
+    return Results<int>.Failure(StandardErrorType.GenericFailure);
 }
 ```
 
