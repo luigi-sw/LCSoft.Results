@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -14,8 +14,8 @@
 
 	<PropertyGroup>
 		<PackageType>Dependency</PackageType>
-		<PackageVersion>0.1.1</PackageVersion>
-		<Version>0.1.1</Version>
+		<PackageVersion>0.1.2</PackageVersion>
+		<Version>0.1.2</Version>
 		<PackageId>LCSoft.Results</PackageId>
 		<Title>LCSoft Results Pattern for .NET</Title>
 		<Company>LC Desenvolvimentos</Company>
@@ -34,6 +34,7 @@
 		<PackageReleaseNotes>
 			Version 0.1.0: Initial release with basic features.
 			Version 0.1.1: Minor fixes, cleanup readme
+			Version 0.1.2: Add compatibility to net6.0, net7.0, net8.0, and net9.0
 		</PackageReleaseNotes>
 	</PropertyGroup>
 
