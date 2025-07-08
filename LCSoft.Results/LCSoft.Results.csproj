@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -38,6 +38,10 @@
 		</PackageReleaseNotes>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
+	  <ImplicitUsings>false</ImplicitUsings>
+	  <DefineConstants>NET5_0;$(DefineConstants)</DefineConstants>
+	</PropertyGroup>
 	
 	<ItemGroup>
 		<InternalsVisibleTo Include="LCSoft.Results.Tests" />

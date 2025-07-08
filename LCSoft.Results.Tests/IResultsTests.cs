@@ -1,27 +1,33 @@
-﻿namespace LCSoft.Results.Tests;
+﻿#if NET5_0
+using System;
+using Xunit;
+#endif
 
-public class IResultsTests
+namespace LCSoft.Results.Tests
 {
-    [Theory]
-    [InlineData(true, false)]
-    [InlineData(false, true)]
-    public void IsFailure_ReturnsInverseOfIsSuccess(bool isSuccess, bool expectedIsFailure)
+    public class IResultsTests
     {
-        IResult result = new DummyResult(isSuccess);
+        [Theory]
+        [InlineData(true, false)]
+        [InlineData(false, true)]
+        public void IsFailure_ReturnsInverseOfIsSuccess(bool isSuccess, bool expectedIsFailure)
+        {
+            IResult result = new DummyResult(isSuccess);
 
-        // Access IsFailure via interface reference to hit default implementation
-        bool actualIsFailure = result.IsFailure;
+            // Access IsFailure via interface reference to hit default implementation
+            bool actualIsFailure = result.IsFailure;
 
-        Assert.Equal(expectedIsFailure, actualIsFailure);
+            Assert.Equal(expectedIsFailure, actualIsFailure);
+        }
     }
-}
 
-public class DummyResult : IResult
-{
-    public bool IsSuccess { get; }
-
-    public DummyResult(bool isSuccess)
+    public class DummyResult : IResult
     {
-        IsSuccess = isSuccess;
+        public bool IsSuccess { get; }
+
+        public DummyResult(bool isSuccess)
+        {
+            IsSuccess = isSuccess;
+        }
     }
 }

@@ -1,4 +1,9 @@
-﻿namespace LCSoft.Results.Tests
+﻿#if NET5_0
+using System;
+using Xunit;
+#endif
+
+namespace LCSoft.Results.Tests
 {
     public class ErrorTests
     {
