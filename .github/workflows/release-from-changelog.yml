@@ -78,8 +78,7 @@ jobs:
             # Extract changelog notes for the version from CHANGELOG.md
             if grep -q "## \[$VERSION\]" CHANGELOG.md; then
               echo "Found changelog section for version $VERSION"
-              #awk "/^## \[$VERSION\]/,/^## \[.*\]/" CHANGELOG.md | sed '$d' > _section.txt
-              awk "/^## \[$VERSION\]/,/^## \[/" CHANGELOG.md | grep -v '^## \[' | grep -v '^---' > _section.txt
+              sed -n "/^## \[$VERSION\]/,/^## \[/p" CHANGELOG.md | sed '$d' > _section.txt
               #echo "Matching pattern: '/^## \\[$VERSION\\]/'"
               #grep -n "## \[" CHANGELOG.md  # Show all version headers with line numbers
             else
@@ -103,6 +102,11 @@ jobs:
           echo "BODY<<EOF" >> $GITHUB_OUTPUT
           cat final_body.txt >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Debug extracted changelog section
+        run: |
+          echo "Extracted section:"
+          cat _section.txt
 
       - name: Check if tag already exists
         id: tagcheck
