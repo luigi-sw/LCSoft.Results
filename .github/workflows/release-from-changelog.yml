@@ -42,12 +42,12 @@ jobs:
         id: version
         run: |
           if [ -n "${{ github.event.inputs.version_override }}" ]; then
-            VERSION="${{ github.event.inputs.version_override }}"
+            VERSION="${{ github.event.inputs.version_override }}" >> $GITHUB_OUTPUT
             echo "Using override version: $VERSION"
           else
             # Extract version from CHANGELOG.md
-            VERSION=$(grep -m1 -Po '^## \[\K[^\]]+' CHANGELOG.md)
-            echo "Using changelog version: $VERSION"
+            VERSION=$(grep -m1 -Po '^## \[\K[^\]]+' CHANGELOG.md) >> $GITHUB_OUTPUT
+            echo "Using changelog version: $VERSION" 
           fi
 
       - name: Extract latest version and changelog section
