@@ -79,7 +79,7 @@ jobs:
             if grep -q "## \[$VERSION\]" CHANGELOG.md; then
               echo "Found changelog section for version $VERSION"
               #awk "/^## \[$VERSION\]/,/^## \[.*\]/" CHANGELOG.md | sed '$d' > _section.txt
-              awk "/^## \[$VERSION\]/,/^## \[/" CHANGELOG.md | head -n -1 | tail -n +2 > _section.txt
+              awk "/^## \[$VERSION\]/,/^## \[/" CHANGELOG.md | grep -v '^## \[' | grep -v '^---' > _section.txt
               #echo "Matching pattern: '/^## \\[$VERSION\\]/'"
               #grep -n "## \[" CHANGELOG.md  # Show all version headers with line numbers
             else
