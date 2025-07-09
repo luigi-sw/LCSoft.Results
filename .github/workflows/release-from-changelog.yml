@@ -45,17 +45,15 @@ jobs:
         id: version
         run: |
           if [ -n "${{ github.event.inputs.version_override }}" ]; then
-            VERSION="${{ github.event.inputs.version_override }}" >> $GITHUB_OUTPUT
+            VERSION="${{ github.event.inputs.version_override }}"
             echo "Using override version: $VERSION"
           else
             # Extract version from CHANGELOG.md
-            VERSION=$(grep -m1 -Po '^## \[\K[^\]]+' CHANGELOG.md) >> $GITHUB_OUTPUT
+            VERSION=$(grep -m1 -Po '^## \[\K[^\]]+' CHANGELOG.md)
             echo "Using changelog version: $VERSION" 
           fi
 
-          {
-            echo "VERSION=$VERSION"
-          } >> $GITHUB_OUTPUT
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
 
           echo "Final cleaned VERSION: '$VERSION'"
 
@@ -65,7 +63,7 @@ jobs:
           VERSION="${{ steps.version.outputs.VERSION }}"
           
           # Extract all lines before the first '## [' (intro section)
-          awk '!/^## \[/' CHANGELOG.md > _intro.txt
+          awk '/^## \[/{exit} {print}' CHANGELOG.md > _intro.txt
 
           if [ -n "${{ github.event.inputs.version_override }}" ]; then
             echo "Manual release - creating simple changelog entry"
