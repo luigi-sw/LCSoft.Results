@@ -128,15 +128,15 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git tag -a "v${{ steps.changelog.outputs.VERSION }}" -m "Release v${{ steps.changelog.outputs.VERSION }}"
-          git push origin "v${{ steps.changelog.outputs.VERSION }}"
+          git tag -a "v${{ steps.version.outputs.VERSION }}" -m "Release v${{ steps.version.outputs.VERSION }}"
+          git push origin "v${{ steps.version.outputs.VERSION }}"
 
       - name: Create GitHub Release
         if: steps.tagcheck.outputs.EXISTS == 'false'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ steps.changelog.outputs.VERSION }}
-          name: v${{ steps.changelog.outputs.VERSION }}
+          tag_name: v${{ steps.version.outputs.VERSION }}
+          name: v${{ steps.version.outputs.VERSION }}
           body: ${{ steps.changelog.outputs.BODY }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
