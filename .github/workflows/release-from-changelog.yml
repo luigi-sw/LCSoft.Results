@@ -97,6 +97,7 @@ jobs:
       - name: Check if tag already exists
         id: tagcheck
         run: |
+          VERSION="${{ steps.version.outputs.VERSION }}"
           TAG="v$VERSION"
           
           if git ls-remote --tags origin | grep -q "refs/tags/$TAG"; then
