@@ -50,6 +50,12 @@ jobs:
             echo "Using changelog version: $VERSION" 
           fi
 
+          {
+            echo "VERSION=$VERSION"
+          } >> $GITHUB_OUTPUT
+
+          echo "Final cleaned VERSION: '$VERSION'"
+
       - name: Extract latest version and changelog section
         id: changelog
         run: |
