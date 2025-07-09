@@ -62,8 +62,8 @@ jobs:
         run: |
           VERSION="${{ steps.version.outputs.VERSION }}"
           
-          # Extract all lines before the first '## [' (intro section)
-          awk '/^## \[/{exit} {print}' CHANGELOG.md > _intro.txt
+          # Extract all lines before the first '## [' (intro section), excluding the first line
+          awk 'NR>1 && /^## \[/{exit} NR>1 {print}' CHANGELOG.md > _intro.txt
 
           if [ -n "${{ github.event.inputs.version_override }}" ]; then
             echo "Manual release - creating simple changelog entry"
