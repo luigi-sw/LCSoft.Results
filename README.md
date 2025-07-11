@@ -8,7 +8,7 @@ Provides unified success/failure result types with rich error information and fu
 
 ---
 
-## ✨ Features
+## Features
 
 - Unified result types for success/failure handling
 - Generic Results\<TValue> and non-generic Results classes
@@ -30,7 +30,7 @@ Provides unified success/failure result types with rich error information and fu
 
 ---
 
-## 📦 Installation
+## Installation
 
 Install via NuGet:
 
@@ -44,7 +44,7 @@ Or via Package Manager:
 Install-Package LCSoft.Results
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Basic Usage
 
@@ -148,7 +148,7 @@ Use ErrorsType.FromCode(code) to retrieve error types dynamically.
 - IResult<TValue, TError> for generic result contracts
 - Both provide functional **Match** methods with success and failure delegates
 
-## ✅ Example
+## Example
 
 ```csharp
 Results<int> ParseNumber(string input)
@@ -160,10 +160,10 @@ Results<int> ParseNumber(string input)
 ```
 
 
-## 📄 License
+## License
 
 This project is licensed under the CC-BY-NC-ND-4.0 License. See the LICENSE file for details.
 
-## 🙌 Contributing
+## Contributing
 
 Contributions are welcome! Please open issues or submit pull requests on GitHub.
